@@ -24,175 +24,82 @@
 
 
 
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>For My Taniya ❤️</title>
-
 <style>
 * { box-sizing: border-box; }
-
 body {
- margin: 0;
- background: radial-gradient(circle,#8b001e,#160008);
- color: white;
- text-align: center;
- font-family: Georgia,serif;
+  margin: 0;
+  padding: 25px 15px;
+  text-align: center;
+  color: white;
+  font-family: Georgia, serif;
+  background: radial-gradient(circle,#8b001e,#160008);
 }
-
-.container {
- padding: 30px 18px;
- max-width: 550px;
- margin: auto;
-}
-
-h1 {
- color: #ffb6c1;
- text-shadow: 0 0 20px red;
-}
-
-.heart {
- font-size: 110px;
- animation: beat 1s infinite;
- filter: drop-shadow(0 0 20px red);
-}
-
+h1 { color: pink; text-shadow: 0 0 20px red; }
+.heart { font-size: 100px; animation: beat 1s infinite; }
 @keyframes beat {
- 50% { transform: scale(1.3); }
+  50% { transform: scale(1.2); }
 }
-
-.rose {
- font-size: 40px;
- animation: float 2s infinite alternate;
-}
-
-@keyframes float {
- to { transform: translateY(-15px); }
-}
-
 button {
- background: #e60036;
- color: white;
- padding: 14px 25px;
- border: 1px solid pink;
- border-radius: 30px;
- font-size: 17px;
- margin: 15px;
+  background: #e60036;
+  color: white;
+  padding: 14px 22px;
+  border: 1px solid pink;
+  border-radius: 30px;
+  font-size: 17px;
+  margin: 15px;
 }
-
 #surprise { display: none; }
-
-video {
- width: 100%;
- border-radius: 18px;
- margin: 20px 0;
-}
-
-.message {
- font-size: 19px;
- line-height: 1.8;
- color: #ffe4e9;
-}
-
+video { width: 100%; border-radius: 15px; margin-top: 20px; }
+.message { font-size: 18px; line-height: 1.8; }
 .petal {
- position: fixed;
- top: -30px;
- pointer-events: none;
- animation: fall 6s linear infinite;
+  position: fixed;
+  top: -30px;
+  pointer-events: none;
+  animation: fall 6s linear infinite;
 }
-
 @keyframes fall {
- to { transform: translateY(110vh) rotate(720deg); }
+  to { transform: translateY(110vh) rotate(720deg); }
 }
 </style>
 </head>
-
 <body>
-<div class="container">
-
-<div class="rose">🌹 🌹 🌹</div>
 
 <h1>For My Taniya ❤️</h1>
 <p>You Are My Forever Love ♾️</p>
-
 <div class="heart">❤️</div>
 
-<button onclick="startSurprise()">
-Open Your Surprise 💌
-</button>
+<button onclick="startSurprise()">Open Your Surprise 💌</button>
 
 <div id="surprise">
-
 <h2>My Dear Taniya 🥺❤️</h2>
 
-<video controls playsinline loop>
-<source src="video.mp4" type="video/mp4">
+<video id="video" controls playsinline loop preload="metadata">
+<source src="./video.mp4" type="video/mp4">
 </video>
 
 <p class="message">
 I MISS YOU SO MUCH! 💔<br><br>
 Every moment without you feels incomplete.<br>
-I wish I could hold your hand right now. 🫂<br><br>
-Distance cannot change my love for you.<br>
-You are my happiness, my smile and my forever. ❤️<br><br>
+Distance cannot change my love for you. ❤️<br><br>
 I LOVE YOU TANIYA! 🌹
 </p>
 
-<audio id="music" loop>
-<source src="music.mp3" type="audio/mpeg">
-</audio>
-
 <button onclick="playMusic()">Play Romantic Music 🎵</button>
+
+<audio id="music" loop preload="auto">
+<source src="./music.mp3" type="audio/mpeg">
+</audio>
 
 <h2>ONE HEART 🫀 ONE LOVE ❤️</h2>
 <h1>ABDULLAH ♾️ TANIYA</h1>
-
-<div class="rose">🌹 ❤️ 🌹</div>
+<div style="font-size:40px">🌹❤️🌹</div>
 <h2>FOREVER & ALWAYS ♾️</h2>
-
-</div>
-</div>
-
-<script>
-function startSurprise() {
- document.getElementById("surprise").style.display="block";
-}
-
-function playMusic() {
- let music = document.getElementById("music");
- music.play();
-}
-
-for(let i=0;i<25;i++){
- let p=document.createElement("div");
- p.className="petal";
- p.innerHTML="🌹";
- p.style.left=Math.random()*100+"vw";
- p.style.animationDelay=Math.random()*5+"s";
- document.body.appendChild(p);
-}
-</script>
-
-</body>
-</html>
-
-    <h2>ONE HEART 🫀 ONE LOVE ❤️</h2>
-    <h1>ABDULLAH ♾️ TANIYA</h1>
-    <div class="rose">🌹❤️🌹</div>
-    <h2>FOREVER & ALWAYS</h2>
-  </div>
-
-  <audio id="music" loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
 </div>
 
 <script>
@@ -200,21 +107,30 @@ function startSurprise() {
   document.getElementById("surprise").style.display = "block";
 }
 
-function playMusic() {
-  document.getElementById("music").play();
+async function playMusic() {
+  const music = document.getElementById("music");
+  try {
+    await music.play();
+  } catch(error) {
+    alert("Music file play hocche na. File format check koro.");
+  }
 }
 
-for (let i = 0; i < 25; i++) {
-  let p = document.createElement("div");
-  p.className = "petal";
-  p.innerHTML = "🌹";
-  p.style.left = Math.random() * 100 + "vw";
-  p.style.animationDuration = (4 + Math.random() * 6) + "s";
-  p.style.animationDelay = Math.random() * 5 + "s";
+document.getElementById("video").addEventListener("error", () => {
+  alert("Video file load hocche na. MP4 format check koro.");
+});
+
+for(let i=0;i<25;i++){
+  let p=document.createElement("div");
+  p.className="petal";
+  p.innerHTML="🌹";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=(4+Math.random()*6)+"s";
   document.body.appendChild(p);
 }
 </script>
 
 </body>
 </html>
+
 
